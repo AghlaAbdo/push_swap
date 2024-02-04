@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:46:18 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/04 20:16:18 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../Libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 # include <limits.h>
 
 void	check_valid_nums(char **arr);

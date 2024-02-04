@@ -1,5 +1,5 @@
 NAME            = push_swap
-NAME_BONS       = push_swap_bonus
+NAME_BONS       = checker
 CC              = cc
 CFLAGS          = -Wall -Wextra -Werror
 LIBFT           =  ./Libft/libft.a
@@ -17,18 +17,22 @@ SRCS            = ./Mandatory/push_swap.c				\
 				./Mandatory/src/stack_tools.c			\
 				./Mandatory/src/handle_arg_tools.c
 
-# SRCS_BONS       = ./Bonus/src/handle_map_bonus.c                \
-#                          ./Bonus/src/check_map_bonus.c            \
-#                          ./Bonus/src/animation_bonus.c            \
-#                          ./Bonus/src/enemy_bonus.c                \
-#                          ./Bonus/src/print_sprites_bonus.c        \
-#                          ./Bonus/src/init_data_bonus.c            \
-#                          ./Bonus/src/check_valid_path_bonus.c   \
-#                          ./Bonus/src/check_functions_bonus.c    \
-#                          ./Bonus/push_swap_bonus.c
+SRCS_BONS		= ./Bonus/push_swap.c					\
+				./Bonus/src/manipulate_stack.c			\
+				./Bonus/src/handle_arguments.c			\
+				./Bonus/src/push.c						\
+				./Bonus/src/rotate.c					\
+				./Bonus/src/sort_funcs.c				\
+				./Bonus/src/sort_tools.c				\
+				./Bonus/src/sort.c						\
+				./Bonus/src/stack_tools.c				\
+				./Bonus/src/handle_arg_tools.c			\
+				./get_next_line/get_next_line.c			\
+				./get_next_line/get_next_line_utils.c
+
 
 OBJS = $(SRCS:.c=.o)
-# OBJS_BONS = $(SRCS_BONS:.c=.o)
+OBJS_BONS = $(SRCS_BONS:.c=.o)
 OBJS_GNL = $(SRCS_GNL:.c=.o)
 
 all: libft $(NAME)
@@ -38,9 +42,8 @@ bonus: libft $(NAME_BONS)
 $(NAME) : $(OBJS) $(LIBFT) 
 		$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $@
 
-# $(NAME_BONS): $(OBJS_BONS) $(OBJS_GNL) $(LIBFT)
-#         @echo "Building the game.."
-#         @$(CC) $(CFLAGS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit  $(OBJS_BONS) $(OBJS_GNL) -o $(NAME_BONS)
+$(NAME_BONS): $(OBJS_BONS) $(OBJS_GNL) $(LIBFT)
+		$(CC) $(CFLAGS) $(LIBFT) $(OBJS_BONS) -o $@
 
 libft:
 		make -C Libft

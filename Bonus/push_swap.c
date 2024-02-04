@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:19:09 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/04 22:54:04 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	f(void)
 {
-	system("leaks push_swap");
+	system("leaks checker");
 }
 
 void	set_target_a(t_list *a, t_list *b)
@@ -99,16 +99,33 @@ void	sort_stack(t_list **a, t_list **b)
 	set_index(*a);
 	bring_min_top(a);
 }
+#include <stdio.h>
+
+void	check_intruction(t_list *stack, char *line)
+{
+	(void)stack;
+	if (!line)
+		return ;
+	if (ft_strcmp(line, "sa\n") && ft_strcmp(line, "sb\n") && ft_strcmp(line, "ss\n")
+		&& ft_strcmp(line, "pa\n") && ft_strcmp(line, "pb\n") && ft_strcmp(line, "ra\n")
+		&& ft_strcmp(line, "ra\n") && ft_strcmp(line, "rb\n") && ft_strcmp(line, "rr\n")
+		&& ft_strcmp(line, "rra\n") && ft_strcmp(line, "rrb\n") && ft_strcmp(line, "rrr\n"))
+		force_exit();
+}
 
 int	main(int ac, char **av)
 {
 	char	**str_nums;
 	char	*str;
+	char	*line;
 	t_list	*a;
 	t_list	*b;
 
 	atexit(f);
 	b = NULL;
+
+
+	
 	if (ac == 1)
 		return (0);
 	str = join_nums(ac, av);
@@ -118,6 +135,15 @@ int	main(int ac, char **av)
 	a = init_nums(str_nums);
 	free_arr(str_nums);
 	check_stack(a);
+	line = get_next_line(0);
+	check_intruction(a, line);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(0);
+		check_intruction(a, line);
+	}
 	sort_stack(&a, &b);
 	ft_lstclear(&a);
 	return (0);

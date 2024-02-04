@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 22:10:25 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 22:40:00 by aaghla           ###   ########.fr       */
+/*   Created: 2023/12/15 18:00:32 by aaghla            #+#    #+#             */
+/*   Updated: 2024/01/27 10:05:22 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned char	*str1;
-	unsigned char	*str2;
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	if (!n)
-		return (0);
-	while (--n && (*str1 || *str2) && *str1 == *str2)
-	{
-		str1++;
-		str2++;
-	}
-	return (*str1 - *str2);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 500
+# endif
+
+char	*get_next_line(int fd);
+char	*my_strchr(const char *s, int c);
+char	*my_strjoin(char *s1, char *s2, int rd);
+int		my_strlen(char *s, int c);
+void	*my_free_it(char *s);
+
+#endif

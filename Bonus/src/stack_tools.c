@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:19:22 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/04 20:25:46 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ void	rev_rotate_stack(t_list **stack)
 
 void	check_stack(t_list *a)
 {
-	if (check_if_sorted(a))
-		exit(0);
+	// if (check_if_sorted(a))
+	// 	exit(0);
 	if (check_for_dup(a))
 	{
 		ft_lstclear(&a);
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
-	if (ft_lstsize(a) == 2)
-	{
-		sa(&a);
-		exit(0);
-	}
-	else if (ft_lstsize(a) == 3)
-	{
-		three_sort(&a);
-		exit(0);
-	}
+	// if (ft_lstsize(a) == 2)
+	// {
+	// 	sa(&a);
+	// 	exit(0);
+	// }
+	// else if (ft_lstsize(a) == 3)
+	// {
+	// 	three_sort(&a);
+	// 	exit(0);
+	// }
 }
