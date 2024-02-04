@@ -3,11 +3,19 @@ NAME_BONS       = push_swap_bonus
 CC              = cc
 CFLAGS          = -Wall -Wextra -Werror
 LIBFT           =  ./Libft/libft.a
-HEADER          = push_swap.h
+HEADER          = ./Mandatory/push_swap.h
 HEADER_BONS = ./Bonus/push_swap_bonus.h
 
-SRCS            = push_swap.c	\
-				manipulate_stack.c
+SRCS            = ./Mandatory/push_swap.c				\
+				./Mandatory/src/manipulate_stack.c	\
+				./Mandatory/src/handle_arguments.c	\
+				./Mandatory/src/push.c				\
+				./Mandatory/src/rotate.c				\
+				./Mandatory/src/sort_funcs.c			\
+				./Mandatory/src/sort_tools.c			\
+				./Mandatory/src/sort.c				\
+				./Mandatory/src/stack_tools.c			\
+				./Mandatory/src/handle_arg_tools.c
 
 # SRCS_BONS       = ./Bonus/src/handle_map_bonus.c                \
 #                          ./Bonus/src/check_map_bonus.c            \
@@ -20,7 +28,7 @@ SRCS            = push_swap.c	\
 #                          ./Bonus/push_swap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
-OBJS_BONS = $(SRCS_BONS:.c=.o)
+# OBJS_BONS = $(SRCS_BONS:.c=.o)
 OBJS_GNL = $(SRCS_GNL:.c=.o)
 
 all: libft $(NAME)
