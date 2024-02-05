@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 20:16:18 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 09:43:13 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_arr(char **str);
 void	force_exit(void);
 t_list	*init_nums(char **str);
 int		check_for_dup(t_list *stack);
-int		check_if_sorted(t_list *stack);
+void	check_if_sorted(t_list *stack);
 void	check_stack(t_list *a);
 void	bring_to_top(t_list **stack, t_list *cheap, char c);
 void	bring_min_top(t_list **a);
@@ -35,6 +35,7 @@ t_list	*find_max(t_list *stack);
 t_list	*find_min(t_list *stack);
 void	cost_calc(t_list *a, t_list *b);
 t_list	*get_cheap(t_list *stack);
+void	its_ko(void);
 
 t_list	*ft_lstnew(int num);
 t_list	*ft_lstlast(t_list *lst);
@@ -58,5 +59,6 @@ void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
 void	sa(t_list **a);
 void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:19:09 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:05:53 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
-	atexit(f);
+	// atexit(f);
 	b = NULL;
 	if (ac == 1)
 		return (0);

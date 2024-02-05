@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 22:54:04 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:43:57 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,40 @@ void	sort_stack(t_list **a, t_list **b)
 }
 #include <stdio.h>
 
-void	check_intruction(t_list *stack, char *line)
+void	check_intruction(t_list **a, t_list **b,  char *line)
 {
-	(void)stack;
 	if (!line)
 		return ;
-	if (ft_strcmp(line, "sa\n") && ft_strcmp(line, "sb\n") && ft_strcmp(line, "ss\n")
-		&& ft_strcmp(line, "pa\n") && ft_strcmp(line, "pb\n") && ft_strcmp(line, "ra\n")
-		&& ft_strcmp(line, "ra\n") && ft_strcmp(line, "rb\n") && ft_strcmp(line, "rr\n")
-		&& ft_strcmp(line, "rra\n") && ft_strcmp(line, "rrb\n") && ft_strcmp(line, "rrr\n"))
+	if (!ft_strcmp(line, "sa\n"))
+		sa(a);
+	else if (!ft_strcmp(line, "sb\n"))
+		sb(a);
+	else if (!ft_strcmp(line, "ss\n"))
+		ss(a, b);
+	else if (!ft_strcmp(line, "pa\n"))
+		pa(a, b);
+	else if (!ft_strcmp(line, "pb\n"))
+		pb(a, b);
+	else if (!ft_strcmp(line, "ra\n"))
+		ra(a);
+	else if (!ft_strcmp(line, "rb\n"))
+		rb(b);
+	else if (!ft_strcmp(line, "rr\n"))
+		rr(a, b);
+	else if (!ft_strcmp(line, "rra\n"))
+		rra(a);
+	else if (!ft_strcmp(line, "rrb\n"))
+		rrb(b);
+	else if (!ft_strcmp(line, "rrr\n"))
+		rrr(a, b);
+	else
 		force_exit();
+}
+
+void	its_ko(void)
+{
+	ft_putstr_fd("KO\n", 1);
+	exit(0);
 }
 
 int	main(int ac, char **av)
@@ -120,6 +144,7 @@ int	main(int ac, char **av)
 	char	*line;
 	t_list	*a;
 	t_list	*b;
+	t_list	*temp;
 
 	atexit(f);
 	b = NULL;
@@ -135,16 +160,32 @@ int	main(int ac, char **av)
 	a = init_nums(str_nums);
 	free_arr(str_nums);
 	check_stack(a);
+	temp = a;
+	while (temp)
+	{
+		printf("| %d |\n", temp->num);
+		temp = temp->next;
+	}
 	line = get_next_line(0);
-	check_intruction(a, line);
+	check_intruction(&a, &b, line);
 	while (line)
 	{
-		printf("%s", line);
+		// printf("%s", line);
 		free(line);
 		line = get_next_line(0);
-		check_intruction(a, line);
+		check_intruction(&a, &b, line);
 	}
-	sort_stack(&a, &b);
+	temp = a;
+	printf("After:\n");
+	while (temp)
+	{
+		printf("| %d |\n", temp->num);
+		temp = temp->next;
+	}
+	if (b)
+		its_ko();
+	check_if_sorted(a);
+	// sort_stack(&a, &b);
 	ft_lstclear(&a);
 	return (0);
 }

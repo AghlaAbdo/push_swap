@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:18:45 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:21:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:27:13 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	push_a(t_list **src, t_list **dst)
 {
 	t_list	*to_push;
 
+	if (!src || !*src)
+		return ;
 	to_push = *src;
 	*src = (*src)->next;
 	if (*src)
@@ -40,6 +42,8 @@ void	swap_stack(t_list **lst)
 	t_list	*second;
 	t_list	*third;
 
+	if (!lst || !*lst || !(*lst)->next)
+		return ;
 	first = *lst;
 	second = (*lst)->next;
 	third = (*lst)->next->next;

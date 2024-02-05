@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:20:14 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 09:48:36 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,16 @@ void	free_arr(char **str)
 	free(str);
 }
 
-int	check_if_sorted(t_list *stack)
+void	check_if_sorted(t_list *stack)
 {
 	while (stack->next)
 	{
 		if (stack->num > stack->next->num)
-			return (0);
+		{
+			its_ko();
+		}
 		stack = stack->next;
 	}
-	return (1);
+	ft_putstr_fd("OK\n", 1);
+	exit(0);
 }

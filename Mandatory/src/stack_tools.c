@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:19:22 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 11:18:23 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate_stack(t_list **stack)
 {
 	t_list	*last;
 
-	if (!*stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	last = ft_lstlast(*stack);
 	last->next = *stack;
@@ -30,6 +30,8 @@ void	rev_rotate_stack(t_list **stack)
 {
 	t_list	*last;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
 	last = ft_lstlast(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;

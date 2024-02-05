@@ -6,17 +6,24 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 20:25:46 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:23:58 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+void	ss(t_list **a, t_list **b)
+{
+	swap_stack(a);
+	swap_stack(b);
+	ft_putstr_fd("ss\n", 1);
+}
+
 void	rotate_stack(t_list **stack)
 {
 	t_list	*last;
 
-	if (!*stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	last = ft_lstlast(*stack);
 	last->next = *stack;
@@ -30,6 +37,8 @@ void	rev_rotate_stack(t_list **stack)
 {
 	t_list	*last;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
 	last = ft_lstlast(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;

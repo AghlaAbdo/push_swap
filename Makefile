@@ -56,10 +56,12 @@ libft:
 
 clean:
 		rm -f $(OBJS)
+		rm -f $(OBJS_BONS)
 		make -C Libft clean
 
 fclean: clean
 		rm -f $(NAME)
+		rm -f $(NAME_BONS)
 		rm -f $(LIBFT)
 
 re: fclean all
