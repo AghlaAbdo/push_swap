@@ -4,6 +4,11 @@
         "push_swap.h": "c",
         "memory": "c",
         "utility": "c",
-        "push_swap_bonus.h": "c"
+        "push_swap_bonus.h": "c",
+        "algorithm": "c",
+        "chrono": "c",
+        "limits": "c",
+        "random": "c",
+        "ratio": "c"
     }
 }

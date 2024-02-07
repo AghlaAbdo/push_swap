@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 12:10:41 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 22:05:15 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	set_target_a(t_list *a, t_list *b)
 			a->target = target;
 		a = a->next;
 	}
+	// if (b->num < b->next->num)
+	// 	rb(b);
 }
 
 void	set_target_b(t_list *a, t_list *b)
@@ -94,6 +96,7 @@ void	sort_stack(t_list **a, t_list **b)
 		set_index(*a);
 		set_index(*b);
 		set_target_b(*a, *b);
+		cost_calc(*b, *a);
 		push_to_a(a, b);
 	}
 	bring_min_top(a);
