@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/06 14:45:53 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 11:49:29 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../Libft/libft.h"
 # include <limits.h>
-#include <libc.h>
+# include <libc.h>
 
 # define FALSE 0
 # define TRUE 1
@@ -36,6 +36,7 @@ char	*join_nums(int ac, char **av);
 void	free_arr(char **str);
 void	force_exit(void);
 t_list	*init_nums(char **str);
+int		check_overflow(char *str);
 int		check_for_dup(t_list *stack);
 int		check_if_sorted(t_list *stack);
 void	check_stack(t_list *a);

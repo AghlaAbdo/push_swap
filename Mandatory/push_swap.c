@@ -6,16 +6,16 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 10:38:36 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 12:10:41 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	f(void)
-{
-	system("leaks push_swap");
-}
+// void	f(void)
+// {
+// 	system("leaks push_swap");
+// }
 
 void	set_target_a(t_list *a, t_list *b)
 {
@@ -99,30 +99,34 @@ void	sort_stack(t_list **a, t_list **b)
 	bring_min_top(a);
 }
 
-#include <stdio.h>
+void	free_exit(char **av)
+{
+	free(av);
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
 
 int	main(int ac, char **av)
 {
-	char	**str_nums;
 	char	*str;
 	t_list	*a;
 	t_list	*b;
 
-	// atexit(f);
-	b = NULL;
 	a = NULL;
+	b = NULL;
 	if (ac == 1)
 		return (0);
-	if (!av[1][0] || (!av[1][1] && !(av[1][0] >= '0' && av[1][0] <= '9')))
+	if (!av[1][0] || (!av[1][1] && !(av[1][0] >= '0' && av[1][0] <= '9'))
+		|| check_overflow(av[1]))
 		force_exit();
 	str = join_nums(ac, av);
-	str_nums = ft_split(str, ' ');
+	av = ft_split(str, ' ');
 	free(str);
-	if (!str_nums || !str_nums[0])
-		force_exit();
-	check_valid_nums(str_nums);
-	a = init_nums(str_nums);
-	free_arr(str_nums);
+	if (!av || !av[0])
+		free_exit(av);
+	check_valid_nums(av);
+	a = init_nums(av);
+	free_arr(av);
 	check_stack(a);
 	sort_stack(&a, &b);
 	ft_lstclear(&a);

@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:12:08 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 09:46:44 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 11:24:46 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	push_to_b(t_list **a, t_list **b)
 	t_list	*cheap;
 
 	cheap = get_cheap(*a);
-	if (cheap->is_above && cheap->target->is_above && !check_if_sorted(*a))
+	if (cheap->is_above && cheap->target->is_above)
 		rotate(a, b, cheap);
-	else if (!(cheap->is_above) && !(cheap->target->is_above && !check_if_sorted(*a)))
+	else if (!(cheap->is_above) && !(cheap->target->is_above))
 		rev_rotate(a, b, cheap);
 	set_index(*a);
 	set_index(*b);

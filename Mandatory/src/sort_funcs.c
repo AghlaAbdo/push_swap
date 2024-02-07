@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:18:45 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 09:43:17 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 11:22:12 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	push_a(t_list **src, t_list **dst)
 }
 
 void	swap_stack(t_list **stack)
-{	if (!stack || !*stack || !(*stack)->next)
+{
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	*stack = (*stack)->next;
 	(*stack)->prev->prev = *stack;
@@ -52,14 +53,10 @@ void	rotate(t_list **a, t_list **b, t_list *cheap)
 {
 	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
 		rr(a, b);
-	// set_index(*a);
-	// set_index(*b);
 }
 
 void	rev_rotate(t_list **a, t_list **b, t_list *cheap)
 {
 	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
 		rrr(a, b);
-	// set_index(*a);
-	// set_index(*b);
 }

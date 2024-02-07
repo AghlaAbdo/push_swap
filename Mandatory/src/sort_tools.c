@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:15:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/06 18:16:40 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 11:24:14 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,46 +32,6 @@ void	set_index(t_list *stack)
 		i++;
 	}
 }
-
-// t_list	*find_max(t_list *stack)
-// {
-// 	long			max;
-// 	t_list	*max_node;
-
-// 	if (!stack)
-// 		return (NULL);
-// 	max = LONG_MIN;
-// 	while (stack)
-// 	{
-// 		if (stack->num > max)
-// 		{
-// 			max = stack->num;
-// 			max_node = stack;
-// 		}
-// 		stack = stack->next;
-// 	}
-// 	return (max_node);
-// }
-
-// t_list	*find_min(t_list *stack)
-// {
-// 	long			min;
-// 	t_list	*min_node;
- 
-// 	if (!stack)
-// 		return (NULL);
-// 	min = LONG_MAX;
-// 	while (stack)
-// 	{
-// 		if (stack->num < min)
-// 		{
-// 			min = stack->num;
-// 			min_node = stack;
-// 		}
-// 		stack = stack->next;
-// 	}
-// 	return (min_node); 
-// }
 
 t_list	*find_max(t_list *stack)
 {

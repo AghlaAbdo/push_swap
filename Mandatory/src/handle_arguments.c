@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/06 20:29:20 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 11:51:33 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,33 @@ char	*join_nums(int ac, char **av)
 	while (i < ac)
 	{
 		nums = ft_strjoin(nums, av[i]);
+		if (!nums)
+			force_exit();
 		nums = ft_strjoin(nums, " ");
+		if (!nums)
+			force_exit();
 		i++;
 	}
 	return (nums);
+}
+
+int	check_overflow(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i] && str[i] == '0')
+		i++;
+	while (str[i++])
+		count++;
+	if (count > 10)
+		return (1);
+	else
+		return (0);
 }
 
 t_list	*init_nums(char **str)
@@ -56,11 +79,6 @@ t_list	*init_nums(char **str)
 	int			i;
 
 	i = 0;
-	if (ft_strlen(str[i]) > 12)
-	{
-		free_arr(str);
-		force_exit();
-	}
 	num = ft_atoi(str[i++]);
 	if (num > 2147483647 || num < -2147483648)
 	{
@@ -71,7 +89,7 @@ t_list	*init_nums(char **str)
 	while (str[i])
 	{
 		num = ft_atoi(str[i]);
-		if (num > 2147483647 || num < -2147483648 || ft_strlen(str[i++]) > 12)
+		if (num > 2147483647 || num < -2147483648 || check_overflow(str[i++]))
 		{
 			free_arr(str);
 			ft_lstclear(&list);
