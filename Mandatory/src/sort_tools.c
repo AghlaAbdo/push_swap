@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:15:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:22:18 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:16:40 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,53 @@ void	set_index(t_list *stack)
 	}
 }
 
+// t_list	*find_max(t_list *stack)
+// {
+// 	long			max;
+// 	t_list	*max_node;
+
+// 	if (!stack)
+// 		return (NULL);
+// 	max = LONG_MIN;
+// 	while (stack)
+// 	{
+// 		if (stack->num > max)
+// 		{
+// 			max = stack->num;
+// 			max_node = stack;
+// 		}
+// 		stack = stack->next;
+// 	}
+// 	return (max_node);
+// }
+
+// t_list	*find_min(t_list *stack)
+// {
+// 	long			min;
+// 	t_list	*min_node;
+ 
+// 	if (!stack)
+// 		return (NULL);
+// 	min = LONG_MAX;
+// 	while (stack)
+// 	{
+// 		if (stack->num < min)
+// 		{
+// 			min = stack->num;
+// 			min_node = stack;
+// 		}
+// 		stack = stack->next;
+// 	}
+// 	return (min_node); 
+// }
+
 t_list	*find_max(t_list *stack)
 {
 	t_list	*max;
-	t_list	*temp;
 	int		n;
 
-	n = 0;
+	n = stack->num;
 	max = stack;
-	temp = stack;
 	while (stack)
 	{
 		if (stack->num > n)
@@ -50,10 +88,6 @@ t_list	*find_max(t_list *stack)
 			max = stack;
 		}
 		stack = stack->next;
-	}
-	while (temp)
-	{
-		temp = temp->next;
 	}
 	return (max);
 }
@@ -105,10 +139,10 @@ t_list	*get_cheap(t_list *stack)
 	n = LLONG_MAX;
 	while (stack)
 	{
-		if (stack->cost < n)
+		if ((long long)stack->cost < n)
 		{
 			cheap = stack;
-			n = stack->cost;
+			n = (long long)stack->cost;
 		}
 		stack = stack->next;
 	}

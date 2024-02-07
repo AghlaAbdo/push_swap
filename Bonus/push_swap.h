@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/05 09:43:13 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 08:25:54 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@
 # include "../Libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include <limits.h>
+# include <stdio.h>
+
+# define FALSE 0
+# define TRUE 1
+
+typedef struct s_list
+{
+	int				num;
+	int				index;
+	int				cost;
+	int				is_above;
+	struct s_list	*target;
+	struct s_list	*next;
+	struct s_list	*prev;
+}				t_list;
 
 void	check_valid_nums(char **arr);
 char	*join_nums(int ac, char **av);

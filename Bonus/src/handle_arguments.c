@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:20:26 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 09:30:06 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ t_list	*init_nums(char **str)
 	int			i;
 
 	i = 0;
+	if (ft_strlen(str[i]) > 12)
+	{
+		free_arr(str);
+		force_exit();
+	}
 	num = ft_atoi(str[i++]);
 	if (num > 2147483647 || num < -2147483648)
 	{

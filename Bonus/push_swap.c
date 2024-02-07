@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/05 10:43:57 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 10:27:45 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,27 +146,26 @@ int	main(int ac, char **av)
 	t_list	*b;
 	t_list	*temp;
 
-	atexit(f);
+	// atexit(f);
 	b = NULL;
-
-
-	
+	a = NULL;
 	if (ac == 1)
 		return (0);
+	if (!av[1][0] || (!av[1][1] && !(av[1][0] >= '0' && av[1][0] <= '9')))
+		force_exit();
 	str = join_nums(ac, av);
 	str_nums = ft_split(str, ' ');
 	free(str);
+	if (!str_nums || !str_nums[0])
+		force_exit();
 	check_valid_nums(str_nums);
 	a = init_nums(str_nums);
 	free_arr(str_nums);
 	check_stack(a);
 	temp = a;
-	while (temp)
-	{
-		printf("| %d |\n", temp->num);
-		temp = temp->next;
-	}
+
 	line = get_next_line(0);
+	// printf("here?\n");
 	check_intruction(&a, &b, line);
 	while (line)
 	{
@@ -176,12 +175,12 @@ int	main(int ac, char **av)
 		check_intruction(&a, &b, line);
 	}
 	temp = a;
-	printf("After:\n");
-	while (temp)
-	{
-		printf("| %d |\n", temp->num);
-		temp = temp->next;
-	}
+	// printf("After:\n");
+	// while (temp)
+	// {
+	// 	printf("| %d |\n", temp->num);
+	// 	temp = temp->next;
+	// }
 	if (b)
 		its_ko();
 	check_if_sorted(a);

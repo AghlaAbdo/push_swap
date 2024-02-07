@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 22:01:47 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 22:41:16 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:26:31 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,6 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# define FALSE 0
-# define TRUE 1
-
-typedef struct s_list
-{
-	int				num;
-	int				index;
-	int				cost;
-	int				is_above;
-	struct s_list	*target;
-	struct s_list	*next;
-	struct s_list	*prev;
-}				t_list;
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);

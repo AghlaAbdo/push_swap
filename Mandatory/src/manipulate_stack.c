@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:52:58 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/03 13:50:02 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:27:04 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_lstsize(t_list *lst)
 {
 	int		count;
 
+	if (!lst)
+		return (0);
 	count = 0;
 	while (lst)
 	{

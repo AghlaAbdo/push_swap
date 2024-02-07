@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/04 18:20:14 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/06 16:01:18 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	free_arr(char **str)
 
 int	check_if_sorted(t_list *stack)
 {
+	if (!stack)
+		return (1);
 	while (stack->next)
 	{
 		if (stack->num > stack->next->num)
