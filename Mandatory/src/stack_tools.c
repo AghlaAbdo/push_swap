@@ -6,39 +6,11 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/06 14:33:11 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:00:37 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	rotate_stack(t_list **stack)
-{
-	t_list	*last;
-
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	last = ft_lstlast(*stack);
-	last->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last->next->prev = last;
-	last->next->next = NULL;
-}
-
-void	rev_rotate_stack(t_list **stack)
-{
-	t_list	*last;
-
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	last = ft_lstlast(*stack);
-	last->prev->next = NULL;
-	last->next = *stack;
-	last->prev = NULL;
-	*stack = last;
-	last->next->prev = last;
-}
 
 void	check_stack(t_list *a)
 {
@@ -60,4 +32,16 @@ void	check_stack(t_list *a)
 		three_sort(&a);
 		exit(0);
 	}
+}
+
+void	rotate(t_list **a, t_list **b, t_list *cheap)
+{
+	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
+		rr(a, b);
+}
+
+void	rev_rotate(t_list **a, t_list **b, t_list *cheap)
+{
+	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
+		rrr(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 11:49:29 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:04:39 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	check_valid_nums(char **arr);
 char	*join_nums(int ac, char **av);
 void	free_arr(char **str);
 void	force_exit(void);
-t_list	*init_nums(char **str);
 int		check_overflow(char *str);
+t_list	*init_nums(char **str);
 int		check_for_dup(t_list *stack);
 int		check_if_sorted(t_list *stack);
 void	check_stack(t_list *a);
@@ -58,9 +58,9 @@ void	ft_lstclear(t_list **lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
 void	rotate_stack(t_list **lst);
-void	rev_rotate_stack(t_list **lst);
-void	swap_stack(t_list **lst);
-void	push_a(t_list **stack_a, t_list **stack_b);
+// void	rev_rotate_stack(t_list **lst);
+// void	swap_stack(t_list **lst);
+// void	push_a(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **a, t_list **b, t_list *cheap);
 void	rev_rotate(t_list **a, t_list **b, t_list *cheap);
 void	rr(t_list **a, t_list **b);

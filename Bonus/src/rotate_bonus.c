@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:03:52 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:45:13 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	rotate_stack(t_list **stack)
+static void	rotate_stack(t_list **stack)
 {
 	t_list	*last;
 
@@ -29,18 +29,15 @@ void	rotate_stack(t_list **stack)
 void	ra(t_list **a)
 {
 	rotate_stack(a);
-	ft_putstr_fd("ra\n", 1);
 }
 
 void	rb(t_list **b)
 {
 	rotate_stack(b);
-	ft_putstr_fd("rb\n", 1);
 }
 
 void	rr(t_list **a, t_list **b)
 {
 	rotate_stack(a);
 	rotate_stack(b);
-	ft_putstr_fd("rr\n", 1);
 }

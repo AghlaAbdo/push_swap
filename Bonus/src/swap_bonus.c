@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_funcs.c                                       :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:18:45 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/05 10:27:13 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:45:18 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	push_a(t_list **src, t_list **dst)
-{
-	t_list	*to_push;
-
-	if (!src || !*src)
-		return ;
-	to_push = *src;
-	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
-	if (!*dst)
-	{
-		*dst = to_push;
-		(*dst)->next = NULL;
-		(*dst)->prev = NULL;
-	}
-	else
-	{
-		to_push->next = *dst;
-		to_push->next->prev = to_push;
-		*dst = to_push;
-	}
-}
-
-void	swap_stack(t_list **lst)
+static void	swap_stack(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
@@ -56,18 +32,18 @@ void	swap_stack(t_list **lst)
 	*lst = second;
 }
 
-void	rotate(t_list **a, t_list **b, t_list *cheap)
+void	sa(t_list **a)
 {
-	while (*a != cheap && *b != cheap->target)
-		rr(a, b);
-	set_index(*a);
-	set_index(*b);
+	swap_stack(a);
 }
 
-void	rev_rotate(t_list **a, t_list **b, t_list *cheap)
+void	sb(t_list **b)
 {
-	while (*a != cheap && *b != cheap->target)
-		rrr(a, b);
-	set_index(*a);
-	set_index(*b);
+	swap_stack(b);
+}
+
+void	ss(t_list **a, t_list **b)
+{
+	swap_stack(a);
+	swap_stack(b);
 }

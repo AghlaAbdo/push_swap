@@ -3,6 +3,7 @@
         "get_next_line.h": "c",
         "push_swap.h": "c",
         "memory": "c",
-        "utility": "c"
+        "utility": "c",
+        "push_swap_bonus.h": "c"
     }
 }

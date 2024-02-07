@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_arg_tools.c                                 :+:      :+:    :+:   */
+/*   handle_arg_tools_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/05 09:48:36 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:44:52 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	force_exit(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
+}
+
+t_list	*handle_args(int ac, char **av)
+{
+	char	*str;
+	t_list	*a;
+
+	str = join_nums(ac, av);
+	av = ft_split(str, ' ');
+	free(str);
+	if (!av || !av[0])
+	{
+		free(av);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	check_valid_nums(av);
+	a = init_nums(av);
+	free_arr(av);
+	return (a);
 }
 
 int	check_for_dup(t_list *stack)
@@ -49,16 +69,20 @@ void	free_arr(char **str)
 	free(str);
 }
 
-void	check_if_sorted(t_list *stack)
+void	check_if_sorted(t_list **stack)
 {
-	while (stack->next)
+	t_list	*temp;
+
+	temp = *stack;
+	while (temp->next)
 	{
-		if (stack->num > stack->next->num)
+		if (temp->num > temp->next->num)
 		{
-			its_ko();
+			its_ko(stack);
 		}
-		stack = stack->next;
+		temp = temp->next;
 	}
+	ft_lstclear(stack);
 	ft_putstr_fd("OK\n", 1);
 	exit(0);
 }

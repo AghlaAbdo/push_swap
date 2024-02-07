@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_arguments.c                                 :+:      :+:    :+:   */
+/*   handle_arguments_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 09:30:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:44:56 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	check_valid_nums(char **arr)
 {
@@ -49,6 +49,25 @@ char	*join_nums(int ac, char **av)
 	return (nums);
 }
 
+int	check_overflow(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i] && str[i] == '0')
+		i++;
+	while (str[i++])
+		count++;
+	if (count > 10)
+		return (1);
+	else
+		return (0);
+}
+
 t_list	*init_nums(char **str)
 {
 	t_list		*list;
@@ -56,11 +75,6 @@ t_list	*init_nums(char **str)
 	int			i;
 
 	i = 0;
-	if (ft_strlen(str[i]) > 12)
-	{
-		free_arr(str);
-		force_exit();
-	}
 	num = ft_atoi(str[i++]);
 	if (num > 2147483647 || num < -2147483648)
 	{
@@ -70,8 +84,8 @@ t_list	*init_nums(char **str)
 	list = ft_lstnew(num);
 	while (str[i])
 	{
-		num = ft_atoi(str[i++]);
-		if (num > 2147483647 || num < -2147483648)
+		num = ft_atoi(str[i]);
+		if (num > 2147483647 || num < -2147483648 || check_overflow(str[i++]))
 		{
 			free_arr(str);
 			ft_lstclear(&list);

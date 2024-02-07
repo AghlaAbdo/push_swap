@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:07:35 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:01 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:45:07 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 static void	push_stack(t_list **src, t_list **dst)
 {
@@ -39,11 +39,9 @@ static void	push_stack(t_list **src, t_list **dst)
 void	pb(t_list **a, t_list **b)
 {
 	push_stack(a, b);
-	ft_putstr_fd("pb\n", 1);
 }
 
 void	pa(t_list **a, t_list **b)
 {
 	push_stack(b, a);
-	ft_putstr_fd("pa\n", 1);
 }

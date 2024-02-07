@@ -7,26 +7,26 @@ HEADER          = ./Mandatory/push_swap.h
 HEADER_BONS = ./Bonus/push_swap_bonus.h
 
 SRCS            = ./Mandatory/push_swap.c				\
-				./Mandatory/src/manipulate_stack.c	\
-				./Mandatory/src/handle_arguments.c	\
-				./Mandatory/src/push.c				\
+				./Mandatory/src/manipulate_stack.c		\
+				./Mandatory/src/handle_arguments.c		\
+				./Mandatory/src/push.c					\
 				./Mandatory/src/rotate.c				\
-				./Mandatory/src/sort_funcs.c			\
+				./Mandatory/src/rev_rotate.c			\
 				./Mandatory/src/sort_tools.c			\
-				./Mandatory/src/sort.c				\
+				./Mandatory/src/sort.c					\
+				./Mandatory/src/swap.c					\
 				./Mandatory/src/stack_tools.c			\
 				./Mandatory/src/handle_arg_tools.c
 
-SRCS_BONS		= ./Bonus/push_swap.c					\
-				./Bonus/src/manipulate_stack.c			\
-				./Bonus/src/handle_arguments.c			\
-				./Bonus/src/push.c						\
-				./Bonus/src/rotate.c					\
-				./Bonus/src/sort_funcs.c				\
-				./Bonus/src/sort_tools.c				\
-				./Bonus/src/sort.c						\
-				./Bonus/src/stack_tools.c				\
-				./Bonus/src/handle_arg_tools.c			\
+SRCS_BONS		= ./Bonus/push_swap_bonus.c					\
+				./Bonus/src/manipulate_stack_bonus.c			\
+				./Bonus/src/handle_arguments_bonus.c			\
+				./Bonus/src/push_bonus.c						\
+				./Bonus/src/rotate_bonus.c					\
+				./Bonus/src/swap_bonus.c						\
+				./Bonus/src/rev_rotate_bonus.c				\
+				./Bonus/src/stack_tools_bonus.c				\
+				./Bonus/src/handle_arg_tools_bonus.c			\
 				./get_next_line/get_next_line.c			\
 				./get_next_line/get_next_line_utils.c
 
