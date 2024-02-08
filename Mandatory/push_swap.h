@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:39 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:02:56 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
 void	sa(t_list **a);
 void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
 
 #endif

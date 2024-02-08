@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:12:08 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 22:09:26 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:32:04 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,28 @@ void	push_to_b(t_list **a, t_list **b)
 	bring_to_top(a, cheap, 'a');
 	bring_to_top(b, cheap->target, 'b');
 	pb(a, b);
+	cost_calc(*a, *b);
+	cheap = get_cheap(*a);
+	// while ((*b)->num < (*b)->next->num && cheap != *a && cheap->is_above)
+	// 	rr(a, b);
+	// if ((*b)->num < (*b)->next->num && cheap == (*a)->next)
+	// 	ss(a, b);
 }
 
 void	push_to_a(t_list **a, t_list **b)
 {
-	bring_to_top(a, (*b)->target, 'a');
+	t_list	*cheap;
+
+	cheap = get_cheap(*b);
+	if (cheap->is_above && cheap->target->is_above)
+		rotate(b, a, cheap);
+	else if (!(cheap->is_above) && !(cheap->target->is_above))
+		rev_rotate(b, a, cheap);
+	set_index(*a);
+	set_index(*b);
+	bring_to_top(b, cheap, 'b');
+	bring_to_top(a, cheap->target, 'a');
+	// bring_to_top(a, (*b)->target, 'a');
 	pa(a, b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 23:43:45 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:49:17 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,12 @@ int	get_med(t_list *stack)
 	// while (i < med)
 	// 	printf("| %d |\n", arr[i++]);
 	sort_arr(&arr, med);
-	// printf("AFTER Sort:");
+	// printf("AFTER Sort:\n");
 	// while (i < med)
 	// 	printf("| %d |\n", arr[i++]);
-	// printf("\n       _________\n");
+	// printf("\n\n       _________\n\n");
 	med = arr[med / 2];
-	// printf("med = %d | med num = %d\n", med, arr[med]);
+	// printf("med = %d |\n", med);
 	return (med);
 }
 
@@ -128,6 +128,8 @@ void	sort_stack(t_list **a, t_list **b)
 {
 	int	count;
 	int	med;
+	int	i;
+	t_list	*temp;
 
 	count = ft_lstsize(*a);
 	if (count-- > 3)
@@ -136,24 +138,49 @@ void	sort_stack(t_list **a, t_list **b)
 		pb(a, b);
 	while (count-- > 3)
 	{
+		i = 0;
+		while (count-- > 3 && i++ < ft_lstsize(*a))
 		med = get_med(*a);
-		if ((*a)->num > med)
-			pb(a, b);
-		else
-			ra(a);
-		// set_index(*a);
-		// set_index(*b);
-		// set_target_a(*a, *b);
-		// cost_calc(*a, *b);
-		// push_to_b(a, b);
+		{
+			if ((*a)->num <= med)
+			{
+				set_index(*b);
+				set_index(*a);
+				set_target_a(*a, *b);
+				cost_calc(*a, *b);
+				push_to_b(a, b);
+				
+				// pb(a, b);
+			}
+			else
+				ra(a);
+		}
 	}
+	// temp = *b;
+	// printf("med = %d\nin B:]n", med);
+	// while (temp)
+	// {
+		// printf("|| %d ||\n", temp->num);
+	// 	temp = temp->next;
+	// }
+	// printf("\n\n       ___________\n\n");
 	three_sort(a);
+	temp = *a;
+	// printf("\n\nIn three sort:\n");
+	// if (!temp)
+	// 	printf("it's NULL !!\n");
+	// while (temp)
+	// {
+	// 	printf("| %d |\n", temp->num);
+	// 	temp = temp->next;
+	// }
+	// printf("\n\n____________\n\n");
 	while (*b)
 	{
 		set_index(*a);
 		set_index(*b);
 		set_target_b(*a, *b);
-		// cost_calc(*b, *a);
+		cost_calc(*b, *a);
 		push_to_a(a, b);
 	}
 	bring_min_top(a);
@@ -171,6 +198,7 @@ int	main(int ac, char **av)
 	char	*str;
 	t_list	*a;
 	t_list	*b;
+	t_list	*temp;
 
 	a = NULL;
 	b = NULL;
@@ -189,6 +217,13 @@ int	main(int ac, char **av)
 	free_arr(av);
 	check_stack(a);
 	sort_stack(&a, &b);
+	temp = a;
+	// printf("\nAfter sort:\n");
+	// while (temp)
+	// {
+	// 	printf("| %d |\n", temp->num);
+	// 	temp = temp->next;
+	// }
 	ft_lstclear(&a);
 	return (0);
 }
