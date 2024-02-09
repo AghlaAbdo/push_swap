@@ -6,13 +6,40 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 12:54:55 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 20:58:04 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_stack(t_list *a)
+t_list	*init_nums(char **str)
+{
+	t_list		*list;
+	long long	num;
+	int			i;
+
+	i = 0;
+	list = NULL;
+	while (str[i])
+	{
+		num = ft_atoi(str[i]);
+		if (num > 2147483647 || num < -2147483648 || check_overflow(str[i++]))
+		{
+			free_arr(str);
+			ft_lstclear(&list);
+			force_exit();
+		}
+		if (ft_lstadd_back(&list, ft_lstnew((int)num)))
+		{
+			free_arr(str);
+			ft_lstclear(&list);
+			force_exit();
+		}
+	}
+	return (list);
+}
+
+void	check_stack(t_list *a)
 {
 	if (check_for_dup(a))
 	{
@@ -36,19 +63,6 @@ int	check_stack(t_list *a)
 		ft_lstclear(&a);
 		exit(0);
 	}
-	return (0);
-}
-
-void	rotate(t_list **a, t_list **b, t_list *cheap)
-{
-	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
-		rr(a, b);
-}
-
-void	rev_rotate(t_list **a, t_list **b, t_list *cheap)
-{
-	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
-		rrr(a, b);
 }
 
 void	set_target_a(t_list *a, t_list *b)

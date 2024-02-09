@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 13:01:53 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 16:44:05 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	f(void)
 {
 	system("leaks push_swap");
 }
-
-
 
 void	sort_arr(int **arr, int n)
 {
@@ -62,8 +60,6 @@ int	get_med(t_list *stack)
 	return (med);
 }
 
-
-
 void	sort_low(t_list **a, t_list **b)
 {
 	int	count;
@@ -90,13 +86,15 @@ void	sort_high(t_list **a, t_list **b)
 	int	count;
 	int	med;
 	int	i;
+	int	n;
 
 	count = ft_lstsize(*a);
 	while (count-- > 3)
 	{
 		i = 0;
 		med = get_med(*a);
-		while (ft_lstsize(*a) > 3 && i++ < ft_lstsize(*a))
+		n = ft_lstsize(*a);
+		while (n > 3 && i++ < n)
 		{
 			if ((*a)->num <= med)
 				pb(a, b);
@@ -122,11 +120,8 @@ int	main(int ac, char **av)
 		|| check_overflow(av[1]))
 		force_exit();
 	a = handle_args(ac, av);
-	if (check_stack(a))
-		return (0);
-	if (ft_lstsize(a) == 3)
-		three_sort(&a);
-	else if (ft_lstsize(a) < 300)
+	check_stack(a);
+	if (ft_lstsize(a) < 300)
 		sort_low(&a, &b);
 	else
 		sort_high(&a, &b);

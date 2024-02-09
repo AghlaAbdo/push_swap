@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:52:58 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/06 12:27:04 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:54:17 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ void	ft_lstclear(t_list **lst)
 	*lst = NULL;
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*ptr;
 
-	if (!lst)
-		return ;
+	if (!new)
+		return (1);
 	ptr = *lst;
 	if (!*lst)
 	{
 		*lst = new;
-		return ;
+		return (0);
 	}
 	while (ptr->next)
 	{
@@ -86,4 +86,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	ptr->next = new;
 	new->prev = ptr;
+	return (0);
 }

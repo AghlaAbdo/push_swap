@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 12:23:36 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 18:23:25 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,17 @@ int	check_if_sorted(t_list *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	from_b_to_a(t_list **a, t_list **b)
+{
+	while (*b)
+	{
+		set_index(*a);
+		set_index(*b);
+		set_target_b(*a, *b);
+		cost_calc(*b, *a);
+		push_to_a(a, b);
+	}
+	bring_min_top(a);
 }

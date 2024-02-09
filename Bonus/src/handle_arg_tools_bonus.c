@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 16:44:52 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 16:04:48 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,29 @@ void	force_exit(void)
 	exit(1);
 }
 
+void	check_empty_args(int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j] == ' ')
+			j++;
+		if (!av[i][j])
+			force_exit();
+		i++;
+	}
+}
+
 t_list	*handle_args(int ac, char **av)
 {
 	char	*str;
 	t_list	*a;
 
+	check_empty_args(ac, av);
 	str = join_nums(ac, av);
 	av = ft_split(str, ' ');
 	free(str);
@@ -67,22 +85,4 @@ void	free_arr(char **str)
 		i++;
 	}
 	free(str);
-}
-
-void	check_if_sorted(t_list **stack)
-{
-	t_list	*temp;
-
-	temp = *stack;
-	while (temp->next)
-	{
-		if (temp->num > temp->next->num)
-		{
-			its_ko(stack);
-		}
-		temp = temp->next;
-	}
-	ft_lstclear(stack);
-	ft_putstr_fd("OK\n", 1);
-	exit(0);
 }

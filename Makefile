@@ -48,8 +48,8 @@ $(NAME_BONS): $(OBJS_BONS) $(OBJS_GNL) $(LIBFT)
 libft:
 		make -C Libft
 
-# %_bonus.o: %_bonus.c $(HEADER_BONS)
-# 		$(CC) $(CFLAGS) -c $< -o $@
+%_bonus.o: %_bonus.c $(HEADER_BONS)
+		$(CC) $(CFLAGS) -c $< -o $@
 
 %.o:%.c $(HEADER) $(LIBFT)
 		$(CC) $(CFLAGS) -c $< -o $@

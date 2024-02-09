@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:41:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 16:45:15 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 20:52:06 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,4 @@ void	check_stack(t_list *a)
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
-}
-
-void	rotate(t_list **a, t_list **b, t_list *cheap)
-{
-	while (*a != cheap && *b != cheap->target)
-		rr(a, b);
-}
-
-void	rev_rotate(t_list **a, t_list **b, t_list *cheap)
-{
-	while (*a != cheap && *b != cheap->target)
-		rrr(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:03:52 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 16:02:31 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ void	rr(t_list **a, t_list **b)
 	rotate_stack(a);
 	rotate_stack(b);
 	ft_putstr_fd("rr\n", 1);
+}
+
+void	rotate(t_list **a, t_list **b, t_list *cheap)
+{
+	while ((*a)->num != cheap->num && (*b)->num != cheap->target->num)
+		rr(a, b);
 }

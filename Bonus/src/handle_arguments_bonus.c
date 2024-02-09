@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 11:31:29 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:59:22 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,18 @@ void	check_valid_nums(char **arr)
 		j = 0;
 		if (arr[i][j] == '-')
 			j++;
+		if (!arr[i][j])
+		{
+			free_arr(arr);
+			force_exit();
+		}
 		while (arr[i][j])
 		{
 			if (!(arr[i][j] >= '0' && arr[i][j] <= '9'))
+			{
+				free_arr(arr);
 				force_exit();
+			}
 			j++;
 		}
 		i++;
@@ -43,7 +51,11 @@ char	*join_nums(int ac, char **av)
 	while (i < ac)
 	{
 		nums = ft_strjoin(nums, av[i]);
+		if (!nums)
+			force_exit();
 		nums = ft_strjoin(nums, " ");
+		if (!nums)
+			force_exit();
 		i++;
 	}
 	return (nums);
@@ -77,13 +89,7 @@ t_list	*init_nums(char **str)
 	int			i;
 
 	i = 0;
-	num = ft_atoi(str[i++]);
-	if (num > 2147483647 || num < -2147483648)
-	{
-		free_arr(str);
-		force_exit();
-	}
-	list = ft_lstnew(num);
+	list = NULL;
 	while (str[i])
 	{
 		num = ft_atoi(str[i]);
@@ -93,7 +99,30 @@ t_list	*init_nums(char **str)
 			ft_lstclear(&list);
 			force_exit();
 		}
-		ft_lstadd_back(&list, ft_lstnew((int)num));
+		if (ft_lstadd_back(&list, ft_lstnew((int)num)))
+		{
+			free_arr(str);
+			ft_lstclear(&list);
+			force_exit();
+		}
 	}
 	return (list);
+}
+
+void	check_if_sorted(t_list **stack)
+{
+	t_list	*temp;
+
+	temp = *stack;
+	while (temp->next)
+	{
+		if (temp->num > temp->next->num)
+		{
+			its_ko(stack);
+		}
+		temp = temp->next;
+	}
+	ft_lstclear(stack);
+	ft_putstr_fd("OK\n", 1);
+	exit(0);
 }

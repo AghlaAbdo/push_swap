@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 16:03:54 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 18:00:22 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "../Libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include <limits.h>
-# include <stdio.h>
 
 # define FALSE 0
 # define TRUE 1
@@ -58,7 +57,7 @@ t_list	*ft_lstnew(int num);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	ft_lstclear(t_list **lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_lstadd_back(t_list **lst, t_list *new);
 
 // void	rotate_stack(t_list **lst);
 // void	rev_rotate_stack(t_list **lst);

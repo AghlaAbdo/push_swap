@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 12:58:35 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 16:02:55 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	check_overflow(char *str)
 	int	i;
 	int	count;
 
-	// printf("here?\n");
 	i = 0;
 	count = 0;
 	while (str[i] && str[i] == ' ')
@@ -83,32 +82,21 @@ int	check_overflow(char *str)
 		return (0);
 }
 
-t_list	*init_nums(char **str)
+void	check_empty_args(int ac, char **av)
 {
-	t_list		*list;
-	long long	num;
-	int			i;
+	int	i;
+	int	j;
 
 	i = 0;
-	num = ft_atoi(str[i++]);
-	if (num > 2147483647 || num < -2147483648)
+	while (i < ac)
 	{
-		free_arr(str);
-		force_exit();
-	}
-	list = ft_lstnew(num);
-	while (str[i])
-	{
-		num = ft_atoi(str[i]);
-		if (num > 2147483647 || num < -2147483648 || check_overflow(str[i++]))
-		{
-			free_arr(str);
-			ft_lstclear(&list);
+		j = 0;
+		while (av[i][j] == ' ')
+			j++;
+		if (!av[i][j])
 			force_exit();
-		}
-		ft_lstadd_back(&list, ft_lstnew((int)num));
+		i++;
 	}
-	return (list);
 }
 
 t_list	*handle_args(int ac, char **av)
@@ -116,6 +104,7 @@ t_list	*handle_args(int ac, char **av)
 	char	*str;
 	t_list	*a;
 
+	check_empty_args(ac, av);
 	str = join_nums(ac, av);
 	av = ft_split(str, ' ');
 	free(str);
@@ -129,17 +118,4 @@ t_list	*handle_args(int ac, char **av)
 	a = init_nums(av);
 	free_arr(av);
 	return (a);
-}
-
-void	from_b_to_a(t_list **a, t_list **b)
-{
-	while (*b)
-	{
-		set_index(*a);
-		set_index(*b);
-		set_target_b(*a, *b);
-		cost_calc(*b, *a);
-		push_to_a(a, b);
-	}
-	bring_min_top(a);
 }

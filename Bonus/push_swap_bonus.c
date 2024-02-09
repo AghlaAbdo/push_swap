@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 16:44:33 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 20:48:14 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,40 @@ void	f(void)
 	system("leaks checker");
 }
 
-static void	check_intruction(t_list **a, t_list **b, char *line)
+void	clear_stacks_exit(t_list **a, t_list **b, char *inst)
 {
-	if (!ft_strcmp(line, "sa\n"))
+	free(inst);
+	ft_lstclear(a);
+	ft_lstclear(b);
+	force_exit();
+}
+
+static void	check_intruction(t_list **a, t_list **b, char *inst)
+{
+	if (!ft_strcmp(inst, "sa\n"))
 		sa(a);
-	else if (!ft_strcmp(line, "sb\n"))
+	else if (!ft_strcmp(inst, "sb\n"))
 		sb(b);
-	else if (!ft_strcmp(line, "ss\n"))
+	else if (!ft_strcmp(inst, "ss\n"))
 		ss(a, b);
-	else if (!ft_strcmp(line, "pa\n"))
+	else if (!ft_strcmp(inst, "pa\n"))
 		pa(a, b);
-	else if (!ft_strcmp(line, "pb\n"))
+	else if (!ft_strcmp(inst, "pb\n"))
 		pb(a, b);
-	else if (!ft_strcmp(line, "ra\n"))
+	else if (!ft_strcmp(inst, "ra\n"))
 		ra(a);
-	else if (!ft_strcmp(line, "rb\n"))
+	else if (!ft_strcmp(inst, "rb\n"))
 		rb(b);
-	else if (!ft_strcmp(line, "rr\n"))
+	else if (!ft_strcmp(inst, "rr\n"))
 		rr(a, b);
-	else if (!ft_strcmp(line, "rra\n"))
+	else if (!ft_strcmp(inst, "rra\n"))
 		rra(a);
-	else if (!ft_strcmp(line, "rrb\n"))
+	else if (!ft_strcmp(inst, "rrb\n"))
 		rrb(b);
-	else if (!ft_strcmp(line, "rrr\n"))
+	else if (!ft_strcmp(inst, "rrr\n"))
 		rrr(a, b);
 	else
-		force_exit();
+		clear_stacks_exit(a, b, inst);
 }
 
 void	its_ko(t_list **stack)

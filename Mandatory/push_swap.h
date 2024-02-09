@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 12:58:44 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 18:14:54 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../Libft/libft.h"
 # include <limits.h>
-# include <libc.h>
+# include <stdio.h>
 
 # define FALSE 0
 # define TRUE 1
@@ -40,7 +40,7 @@ t_list	*handle_args(int ac, char **av);
 t_list	*init_nums(char **str);
 int		check_for_dup(t_list *stack);
 int		check_if_sorted(t_list *stack);
-int		check_stack(t_list *a);
+void	check_stack(t_list *a);
 void	set_target_a(t_list *a, t_list *b);
 void	set_target_b(t_list *a, t_list *b);
 void	bring_to_top(t_list **stack, t_list *cheap, char c);
@@ -59,7 +59,7 @@ t_list	*ft_lstnew(int num);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	ft_lstclear(t_list **lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_lstadd_back(t_list **lst, t_list *new);
 
 void	rotate_stack(t_list **lst);
 // void	rev_rotate_stack(t_list **lst);
