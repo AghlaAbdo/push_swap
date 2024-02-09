@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/07 16:44:56 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:31:29 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ int	check_overflow(char *str)
 
 	i = 0;
 	count = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
 	if (str[i] == '-')
 		i++;
 	while (str[i] && str[i] == '0')
 		i++;
-	while (str[i++])
+	while (str[i] && str[i] >= '0' && str[i++] <= '9')
 		count++;
 	if (count > 10)
 		return (1);

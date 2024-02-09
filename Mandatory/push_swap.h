@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/08 19:02:56 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/09 12:58:44 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ char	*join_nums(int ac, char **av);
 void	free_arr(char **str);
 void	force_exit(void);
 int		check_overflow(char *str);
+t_list	*handle_args(int ac, char **av);
 t_list	*init_nums(char **str);
 int		check_for_dup(t_list *stack);
 int		check_if_sorted(t_list *stack);
-void	check_stack(t_list *a);
+int		check_stack(t_list *a);
+void	set_target_a(t_list *a, t_list *b);
+void	set_target_b(t_list *a, t_list *b);
 void	bring_to_top(t_list **stack, t_list *cheap, char c);
 void	bring_min_top(t_list **a);
+void	from_b_to_a(t_list **a, t_list **b);
 void	push_to_b(t_list **a, t_list **b);
 void	push_to_a(t_list **a, t_list **b);
 void	three_sort(t_list **a);
