@@ -14,17 +14,21 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@echo "archiving libft library.."
+	@ar rcs $(NAME) $(OBJ)
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@echo "Libft, Compiling $<"
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 bonus: all
 
 clean:
-	rm -rf $(OBJ) $(OBJBONUS)
+	@echo "Libft object files removed"
+	@rm -rf $(OBJ) $(OBJBONUS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@echo "Libft library removed"
+	@rm -rf $(NAME)
 
 re: fclean all

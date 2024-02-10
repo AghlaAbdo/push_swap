@@ -6,11 +6,11 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:52:58 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 18:00:04 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 10:17:16 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_bonus.h"
+#include "../checker_bonus.h"
 
 t_list	*ft_lstnew(int num)
 {
