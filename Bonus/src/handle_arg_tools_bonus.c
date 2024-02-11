@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 10:17:05 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:57:42 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	force_exit(void)
 	exit(1);
 }
 
-void	check_empty_args(int ac, char **av)
+static void	check_empty_args(int ac, char **av)
 {
 	int	i;
 	int	j;

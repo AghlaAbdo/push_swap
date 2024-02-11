@@ -6,18 +6,13 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 10:17:39 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:57:17 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	f(void)
-{
-	system("leaks checker");
-}
-
-void	clear_stacks_exit(t_list **a, t_list **b, char *inst)
+static void	clear_stacks_exit(t_list **a, t_list **b, char *inst)
 {
 	free(inst);
 	ft_lstclear(a);
@@ -53,9 +48,10 @@ static void	check_intruction(t_list **a, t_list **b, char *inst)
 		clear_stacks_exit(a, b, inst);
 }
 
-void	its_ko(t_list **stack)
+void	its_ko(t_list **a, t_list **b)
 {
-	ft_lstclear(stack);
+	ft_lstclear(a);
+	ft_lstclear(b);
 	ft_putstr_fd("KO\n", 1);
 	exit(0);
 }
@@ -75,7 +71,6 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
-	// atexit(f);
 	a = NULL;
 	b = NULL;
 	validate_args(ac, av);
@@ -92,7 +87,7 @@ int	main(int ac, char **av)
 			check_intruction(&a, &b, str);
 	}
 	if (b)
-		its_ko(&a);
+		its_ko(&a, &b);
 	check_if_sorted(&a);
 	ft_lstclear(&a);
 	return (0);

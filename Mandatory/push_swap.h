@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 09:26:28 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:56:45 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../Libft/libft.h"
 # include <limits.h>
-# include <stdio.h>
 
 # define FALSE 0
 # define TRUE 1
@@ -54,17 +53,11 @@ t_list	*find_max(t_list *stack);
 t_list	*find_min(t_list *stack);
 void	cost_calc(t_list *a, t_list *b);
 t_list	*get_cheap(t_list *stack);
-
 t_list	*ft_lstnew(int num);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	ft_lstclear(t_list **lst);
 int		ft_lstadd_back(t_list **lst, t_list *new);
-
-void	rotate_stack(t_list **lst);
-// void	rev_rotate_stack(t_list **lst);
-// void	swap_stack(t_list **lst);
-// void	push_a(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **a, t_list **b, t_list *cheap);
 void	rev_rotate(t_list **a, t_list **b, t_list *cheap);
 void	rr(t_list **a, t_list **b);

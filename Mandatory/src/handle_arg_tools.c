@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:25:39 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 18:23:25 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:31:20 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	from_b_to_a(t_list **a, t_list **b)
 		cost_calc(*b, *a);
 		push_to_a(a, b);
 	}
+	set_index(*a);
 	bring_min_top(a);
 }

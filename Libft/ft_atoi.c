@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:42:27 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 09:34:43 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 10:29:26 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ long long	ft_atoi(const char *str)
 		else if (n < 0 && sign == -1)
 			return (0);
 	}
-	
 	return (n * sign);
 }

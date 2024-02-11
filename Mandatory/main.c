@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:28:36 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 10:05:13 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:52:14 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	f(void)
-{
-	system("leaks push_swap");
-}
-
-void	sort_arr(int **arr, int n)
+static void	sort_arr(int **arr, int n)
 {
 	int	i;
 	int	j;
@@ -39,28 +34,35 @@ void	sort_arr(int **arr, int n)
 	}
 }
 
-int	get_med(t_list *stack)
+static int	get_med(t_list **a, t_list **b)
 {
-	int	*arr;
-	int	med;
-	int	i;
+	t_list	*temp;
+	int		*arr;
+	int		med;
+	int		i;
 
+	temp = *a;
 	i = 0;
-	med = ft_lstsize(stack);
-	arr = (int *)malloc(ft_lstsize(stack) * sizeof(int));
-	while (stack)
+	med = ft_lstsize(temp);
+	arr = (int *)malloc(ft_lstsize(temp) * sizeof(int));
+	if (!arr)
 	{
-		arr[i++] = stack->num;
-		stack = stack->next;
+		ft_lstclear(a);
+		ft_lstclear(b);
+		force_exit();
 	}
-	i = 0;
+	while (temp)
+	{
+		arr[i++] = temp->num;
+		temp = temp->next;
+	}
 	sort_arr(&arr, med);
 	med = arr[med / 2];
 	free(arr);
 	return (med);
 }
 
-void	sort_low(t_list **a, t_list **b)
+static void	sort_low(t_list **a, t_list **b)
 {
 	int	count;
 
@@ -81,7 +83,7 @@ void	sort_low(t_list **a, t_list **b)
 	from_b_to_a(a, b);
 }
 
-void	sort_high(t_list **a, t_list **b)
+static void	sort_high(t_list **a, t_list **b)
 {
 	int	count;
 	int	med;
@@ -92,7 +94,7 @@ void	sort_high(t_list **a, t_list **b)
 	while (count-- > 3)
 	{
 		i = 0;
-		med = get_med(*a);
+		med = get_med(a, b);
 		n = ft_lstsize(*a);
 		while (n > 3 && i++ < n)
 		{
@@ -111,7 +113,6 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
-	// atexit(f);
 	a = NULL;
 	b = NULL;
 	if (ac == 1)

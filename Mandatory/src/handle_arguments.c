@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/09 16:02:55 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 11:55:06 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	check_overflow(char *str)
 		return (0);
 }
 
-void	check_empty_args(int ac, char **av)
+static void	check_empty_args(int ac, char **av)
 {
 	int	i;
 	int	j;

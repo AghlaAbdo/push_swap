@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:08:57 by aaghla            #+#    #+#             */
-/*   Updated: 2024/02/10 10:17:12 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/02/10 10:50:34 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	check_if_sorted(t_list **stack)
 	{
 		if (temp->num > temp->next->num)
 		{
-			its_ko(stack);
+			its_ko(stack, NULL);
 		}
 		temp = temp->next;
 	}
